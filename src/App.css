@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+.celebration-modal .ant-modal-content {
+    border-radius: 16px;
+    background: linear-gradient(135deg, #fff 0%, #f0f2f5 100%);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .celebration-modal .ant-modal-close {
+    color: #666;
+  }
+  
+  .celebration-modal .ant-modal-close:hover {
+    color: #333;
+  }
+  
+  @keyframes starPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  .celebration-modal .anticon-star {
+    animation: starPulse 1.5s infinite;
+  }
+  
+  .celebration-modal .anticon-star:nth-child(2) { animation-delay: 0.3s; }
+  .celebration-modal .anticon-star:nth-child(3) { animation-delay: 0.6s; }
+  .celebration-modal .anticon-star:nth-child(4) { animation-delay: 0.9s; }
+  .celebration-modal .anticon-star:nth-child(5) { animation-delay: 1.2s; }
