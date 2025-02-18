@@ -1,4 +1,4 @@
-# Interactive Quiz Platform
+# QuizMaster
 
 ## Overview
 
