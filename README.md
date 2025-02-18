@@ -1,6 +1,6 @@
 # QuizMaster
 
-![Quiz Interface](./assets/thum.png)
+![Quiz Interface](./src/assets/thum.png)
 
 ## Overview
 
