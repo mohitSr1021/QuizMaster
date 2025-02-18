@@ -4,6 +4,8 @@
 
 The **QuizMaster** is a dynamic web application designed for users to take quizzes, track their progress, and receive immediate feedback. The platform allows users to view their quiz history and provides a timer-based experience to enhance engagement.
 
+> ⚛️ **This is a basic React project that focuses on implementing core JavaScript concepts** like state management, event handling, and routing in a web application.
+
 ### Key Features
 
 #### **1. Quiz Creation & Management**
