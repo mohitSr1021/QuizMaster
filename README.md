@@ -1,5 +1,7 @@
 # QuizMaster
 
+![Quiz Interface](./assets/thum.png)
+
 ## Overview
 
 The **QuizMaster** is a dynamic web application designed for users to take quizzes, track their progress, and receive immediate feedback. The platform allows users to view their quiz history and provides a timer-based experience to enhance engagement.
