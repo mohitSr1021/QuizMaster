@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Card, Button, Progress, Alert, Typography, Space, Radio } from "antd"
 import { ClockCircleOutlined, TrophyOutlined, RedoOutlined } from "@ant-design/icons"
-import { SAMPLE_QUESTIONS } from "../data/Data.api"
+import { SAMPLE_QUESTIONS } from "../Data/Data.api.js"
 import { saveQuizAttempt, } from "../services/indexedDB"
 import Celebration from "./Celebration"
 import "../App.css"
