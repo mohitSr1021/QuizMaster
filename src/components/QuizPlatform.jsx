@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react"
-import { Card, Button, Progress, Alert, Typography, Space, Radio } from "antd"
-import { ClockCircleOutlined, TrophyOutlined, RedoOutlined } from "@ant-design/icons"
+import { Card, Button, Progress, Alert, Typography, Space, Radio, Modal } from "antd"
+import { ClockCircleOutlined, TrophyOutlined, RedoOutlined, CloseOutlined } from "@ant-design/icons"
 import { SAMPLE_QUESTIONS } from "../Data/Data.api.js"
 import { saveQuizAttempt, } from "../services/indexedDB"
 import Celebration from "./Celebration"
 import "../App.css"
-import { Link, } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const { Title, Text } = Typography
 
 const QuizPlatform = () => {
+  const navigate = useNavigate();
   const [score, setScore] = useState(0)
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [showScore, setShowScore] = useState(false)
@@ -18,6 +19,7 @@ const QuizPlatform = () => {
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [showFeedback, setShowFeedback] = useState(false)
   const [showCelebration, setShowCelebration] = useState(false)
+  const [showCancelModal, setShowCancelModal] = useState(false)
 
   useEffect(() => {
     let timer
@@ -93,6 +95,20 @@ const QuizPlatform = () => {
     setShowCelebration(false)
   }
 
+  const handleCancelQuiz = () => {
+    setShowCancelModal(true)
+    setIsActive(false); // Pause the timer while modal is open
+  }
+
+  const handleCancelConfirm = () => {
+    navigate('/'); // Or wherever you want to redirect
+  }
+
+  const handleCancelDismiss = () => {
+    setShowCancelModal(false)
+    setIsActive(true); // Resume the timer
+  }
+
   if (showScore) {
     return (
       <Card style={{ maxWidth: 800, margin: "20px auto", }}>
@@ -133,7 +149,14 @@ const QuizPlatform = () => {
   }
 
   return (
-      <Card style={{ minWidth: 800, maxWidth: 800, margin: "20px auto", }}>
+    <>
+      <Card style={{ minWidth: 800, maxWidth: 800, margin: "20px auto", position: "relative" }}>
+        <div
+          onClick={handleCancelQuiz}
+          className="absolute bottom-0 right-0 px-3 py1 rounded-lg shadow hover:cursor-pointer m-2 hover:bg-red-400 hover:text-white"
+        >
+          Cancel Quiz
+        </div>
         <Space direction="vertical" size="large" style={{ width: "100%" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <Title level={4}>
@@ -188,10 +211,25 @@ const QuizPlatform = () => {
             />
           )}
         </Space>
-
       </Card>
+
+      <Modal
+        title="Cancel Quiz"
+        open={showCancelModal}
+        onCancel={handleCancelDismiss}
+        footer={[
+          <Button key="continue" onClick={handleCancelDismiss}>
+            Continue Quiz
+          </Button>,
+          <Button key="cancel" type="primary" danger onClick={handleCancelConfirm}>
+            Yes, Cancel Quiz
+          </Button>
+        ]}
+      >
+        <p>Are you sure you want to cancel? Your progress will be lost.</p>
+      </Modal>
+    </>
   )
 }
 
 export default QuizPlatform
-

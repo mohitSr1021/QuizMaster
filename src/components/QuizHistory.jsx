@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { Card, Typography, Table, Empty, Statistic, Row, Col, Button, Modal } from "antd"
 import { HistoryOutlined, RiseOutlined, TrophyOutlined, ClockCircleOutlined, DeleteOutlined } from "@ant-design/icons"
